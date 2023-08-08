@@ -1,3 +1,41 @@
+
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector("#main"),
+  smooth: true
+});
+// each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+locoScroll.on("scroll", ScrollTrigger.update);
+
+// tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
+ScrollTrigger.scrollerProxy("#main", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+  getBoundingClientRect() {
+    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+  },
+  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+  pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+});
+
+
+
+
+// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+ScrollTrigger.refresh();
+
+
+
 var tl = gsap.timeline()
 
 tl.from("#page1 svg",{
@@ -5,9 +43,6 @@ tl.from("#page1 svg",{
     opacity:0,
     duration:0.6,
     delay:0.3,
-  
-   
-    
 })
 tl.from("#page1 img",{
     scale:0.3,
@@ -26,12 +61,11 @@ tl.from("#page1 img",{
 
 })
 gsap.to("#page1 svg",{
-    scale:0.12,
-    marginTop:"-70px",
-    // position:fixed,
+    scale:.14,
+    marginTop:"-80px",
     scrollTrigger:{
         trigger:"#page1 svg ",
-        scroller:"body",
+        scroller:"#main",
         // markers:true,
         start:"top 0%",
         end:"top -6%",
@@ -64,10 +98,10 @@ gsap.to("#page2  h2 span",{
     stagger:0.2,
     scrollTrigger:{
         trigger:"#page2 h2 span",
-        scroller:"body",
+        scroller:"#main",
         // markers:true,
-        start:"top 50%",
-        end:"top -60%",
+        start:"top 70%",
+        end:"top -50%",
         scrub:2
     }
 })
@@ -77,11 +111,11 @@ gsap.to("#page2  #svg1,page2 #svg2 ",{
     left:"-20vw",
     scrollTrigger:{
         trigger:"#page2 #svg1",
-        scroller:"body",
+        scroller:"#main",
         // markers:true,
-        start:"top 55%",
-        end:"top -30%",
-        scrub:3
+        start:"top 80%",
+        end:"top -20%",
+        scrub:2
     }
 })
 
@@ -106,10 +140,10 @@ gsap.to("#page3  h2 span",{
     stagger:0.2,
     scrollTrigger:{
         trigger:"#page3 h2 span",
-        scroller:"body",
+        scroller:"#main",
         // markers:true,
-        start:"top 60%",
-        end:"top 10%",
+        start:"top 80%",
+        end:"top 35%",
         scrub:2
     }
 })
@@ -121,11 +155,11 @@ gsap.from("#page3  #bottom-part #part1>h5,#page3 #first-img ",{
     duration:0.5,
     scrollTrigger:{
         trigger:"#page3 #bottom-part #part1>h5,#page3 #first-img ",
-        scroller:"body",
+        scroller:"#main",
         // markers:true,
-        start:"top 96%",
-        end:"top 75%",
-        scrub:1
+        start:"top 95%",
+        end:"top 85%",
+        scrub:2
     }
 })
 
@@ -136,11 +170,11 @@ gsap.from("#page3  #bottom-part #part1 #exp ",{
     duration:0.5,
     scrollTrigger:{
         trigger:"#page3 #bottom-part #part1 #exp ",
-        scroller:"body",
+        scroller:"#main",
         // markers:true,
-        start:"top 97%",
-        end:"top 75%",
-        scrub:1
+        start:"top 95%",
+        end:"top 85%",
+        scrub:2
     }
 })
 
@@ -150,11 +184,11 @@ gsap.from("#page3  #bottom-part #part1>img ",{
     duration:0.5,
     scrollTrigger:{
         trigger:"#page3 #bottom-part #part1>img ",
-        scroller:"body",
+        scroller:"#main",
         // markers:true,
-        start:"top 97%",
-        end:"top 75%",
-        scrub:1
+        start:"top 95%",
+        end:"top 85%",
+        scrub:2
     }
 })
 
@@ -164,13 +198,115 @@ gsap.from("#page3  #bottom-part #part2 #sec-img ",{
     duration:0.5,
     scrollTrigger:{
         trigger:"#page3 #bottom-part #part2 #sec-img ",
-        scroller:"body",
+        scroller:"#main",
         // markers:true,
-        start:"top 97%",
-        end:"top 75%",
-        scrub:1
+        start:"top 95%",
+        end:"top 85%",
+        scrub:2
     }
 })
+
+
+
+  gsap.from("#page4 #first-elem",{
+    y:70,
+    // delay:0.5,
+    opacity:0,
+    duration:0.5,
+    scrollTrigger:{
+        trigger:"#page4 #first-elem",
+        scroller:"#main",
+        // markers:true,
+        start:"top 95%",
+        end:"top 90%",
+        scrub:2,
+
+
+    }
+  })
+
+  gsap.from("#page4 #second-elem",{
+    y:70,
+    // delay:0.5,
+    opacity:0,
+    duration:0.5,
+    scrollTrigger:{
+        trigger:"#page4 #second-elem",
+        scroller:"#main",
+        // markers:true,
+        start:"top 95%",
+        end:"top 90%",
+        scrub:2,
+
+
+    }
+  })
+
+  gsap.from("#page4 #third-elem",{
+    y:60,
+    delay:0.5,
+    opacity:0,
+    duration:0.5,
+    scrollTrigger:{
+        trigger:"#page4 #third-elem",
+        scroller:"#main",
+        // markers:true,
+        start:"top 95%",
+        end:"top 90%",
+        scrub:2,
+
+
+    }
+  })
+
+  gsap.from("#page4 #fourth-elem",{
+    y:60,
+    delay:0.5,
+    opacity:0,
+    duration:0.5,
+    scrollTrigger:{
+        trigger:"#page4 #fourth-elem",
+        scroller:"#main",
+        // markers:true,
+        start:"top 95%",
+        end:"top 90%",
+        scrub:2,
+
+
+    }
+  })
+
+  gsap.from("#page4 #fifth-elem",{
+    y:60,
+    delay:0.5,
+    opacity:0,
+    duration:0.5,
+    scrollTrigger:{
+        trigger:"#page4 #fifth-elem",
+        scroller:"#main",
+        // markers:true,
+        start:"top 95%",
+        end:"top 90%",
+        scrub:2,
+
+
+    }
+  })
+
+  
+// swiper js
+
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: "auto",
+  pagination: {
+    el: ".swiper-pagination",
+    type:"fraction"
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
 
 
 

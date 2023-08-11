@@ -309,6 +309,469 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 
+gsap.to("#page5 #blue,#page5 #white ",{
+  left:"-22vw",
+  scrollTrigger:{
+      trigger:"#page5 #blue,#page5 #white",
+      scroller:"#main",
+      // markers:true,
+      start:"top 75%",
+      end:"top 16%",
+      scrub:2
+  }
+})
+
+
+var h2Data = document.querySelectorAll("#page6  h2")
+
+h2Data.forEach(function(elem){
+    var textData = elem.textContent
+    var splitedText = textData.split("")
+
+    var clutter = ""
+
+   splitedText.forEach(function(e){
+   clutter += `<span>${e}</span>`
+   
+})
+   elem.innerHTML = clutter;
+})
+
+
+gsap.to("#page6 #text-content3 h2 span ",{
+ 
+  color:"#E3E3C4",
+  stagger:0.2,
+  scrollTrigger:{
+      trigger:"#page6 #text-content3 h2 span ",
+      scroller:"#main",
+      // markers:true,
+      start:"top 80%",
+      end:"top 20%",
+      scrub:2
+  }
+})
+
+
+gsap.from("#text-content3 h5",{
+  y:60,
+  duration:0.5,
+  opacity:0,
+  scrollTrigger:{
+   trigger:"#text-content3 h5",
+   scroller:"#main",
+  //  markers:true,
+   start:"top 90%",
+   end:"top 80%",
+   scrub:2
+  }
+})
+
+gsap.from(".element #first-img,.element #third-img",{
+  y:60,
+  duration:0.5,
+  opacity:0,
+  scrollTrigger:{
+   trigger:".element #third-img",
+   scroller:"#main",
+  //  markers:true,
+   start:"top 90%",
+   end:"top 80%",
+   scrub:2
+  }
+})
+
+
+gsap.from(".element #sec-img",{
+  y:60,
+  duration:0.5,
+  opacity:0,
+  scrollTrigger:{
+   trigger:".element #sec-img",
+   scroller:"#main",
+  //  markers:true,
+   start:"top 90%",
+   end:"top 80%",
+   scrub:2
+  }
+})
+
+
+gsap.from("#dl",{
+  y:40,
+  duration:0.5,
+  opacity:0,
+  scrollTrigger:{
+   trigger:"#dl",
+   scroller:"#main",
+  //  markers:true,
+   start:"top 90%",
+   end:"top 80%",
+   scrub:2
+  }
+})
+
+gsap.to("#svg5,#svg6",{
+  left:"-22vw",
+  scrollTrigger:{
+      trigger:"#svg5,#svg6",
+      scroller:"#main",
+      // markers:true,
+      start:"top 70%",
+      end:"top 0%",
+      scrub:2
+  }
+})
+
+var h2Data = document.querySelectorAll("#page7 #text-content4 h2")
+
+h2Data.forEach(function(elem){
+    var textData = elem.textContent
+    var splitedText = textData.split("")
+
+    var clutter = ""
+
+   splitedText.forEach(function(e){
+   clutter += `<span>${e}</span>`
+   
+})
+   elem.innerHTML = clutter;
+})
+
+
+gsap.to("#page7 #text-content4 h2 span ",{
+ 
+  color:"#434B34",
+  stagger:0.2,
+  scrollTrigger:{
+      trigger:"#page7 #text-content4 h2 span ",
+      scroller:"#main",
+      // markers:true,
+      start:"top 70%",
+      end:"top 0%",
+      scrub:2
+  }
+})
+
+var tl2 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#page8",
+    scroller:"#main",
+    // markers:true,
+    start:"top 60%",
+    end:"top -10%",
+    scrub:3
+  }
+})
+
+tl2.to(" #left-img",{
+   transform:`translateX(-50%)`,
+   duration:1,
+},"#page8-anim")
+
+
+tl2.to(" #right-img",{
+  transform:`translateX(50%)`,
+  duration:1,
+},"#page8-anim")
+
+
+tl2.from(" #middle",{
+  // transform:`translateY(10%)`,
+  // y:10,
+  duration:1,
+  opacity:0,
+
+})
+
+tl2.from(" #middle #well",{
+  transform:`translateY(70%)`,
+  duration:1,
+  opacity:0,
+
+})
+
+gsap.to("#svg7,#svg8",{
+  left:"0vw",
+  scrollTrigger:{
+      trigger:"#svg7,#svg8",
+      scroller:"#main",
+      // markers:true,
+      start:"top 88%",
+      end:"top -50%",
+      scrub:3
+  }
+})
+
+
+var h2Data = document.querySelectorAll("#page10  h2")
+
+h2Data.forEach(function(elem){
+    var textData = elem.textContent
+    var splitedText = textData.split("")
+
+    var clutter = ""
+
+   splitedText.forEach(function(e){
+   clutter += `<span>${e}</span>`
+   
+})
+   elem.innerHTML = clutter;
+})
+
+
+gsap.to("#page10 #text-content5 h2 span ",{
+ 
+  color:"#E3E3C4",
+  stagger:0.2,
+  scrollTrigger:{
+      trigger:"#page10 #text-content5 h2 span ",
+      scroller:"#main",
+      // markers:true,
+      start:"top 80%",
+      end:"top 20%",
+      scrub:2
+  }
+})
+
+
+gsap.from("#text-content5 h5",{
+  y:60,
+  duration:0.5,
+  opacity:0,
+  scrollTrigger:{
+   trigger:"#text-content5 h5",
+   scroller:"#main",
+  //  markers:true,
+   start:"top 90%",
+   end:"top 80%",
+   scrub:2
+  }
+})
+
+
+gsap.from("#page10 #center-part #part1 img",{
+  y:60,
+  duration:0.5,
+  opacity:0,
+  scrollTrigger:{
+   trigger:"#page10 #center-part #part1 img",
+   scroller:"#main",
+  //  markers:true,
+   start:"top 90%",
+   end:"top 80%",
+   scrub:2
+  }
+})
+
+
+gsap.from("#page10 #part2,#page10 #part3",{
+  y:60,
+  duration:0.5,
+  opacity:0,
+  scrollTrigger:{
+   trigger:"#page10 #part2,#page10 #part3",
+   scroller:"#main",
+  //  markers:true,
+   start:"top 90%",
+   end:"top 80%",
+   scrub:2
+  }
+})
+
+gsap.from("#page10 #dis",{
+  opacity:0,
+  y:30,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page10 #dis",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 85%",
+    scrub:2
+  }
+})
+
+
+gsap.from("#page11 #text-content6 h2",{
+  opacity:0,
+  y:40,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page11 #text-content6 h2",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+
+gsap.from("#page11 #text-content6 h5",{
+  opacity:0,
+  y:40,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page11 #text-content6 h5",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+
+
+gsap.from("#page11 #bottom #part-1 ",{
+  opacity:0,
+  y:50,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page11 #part-1 ",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+
+gsap.from("#page11 #part-2 h3",{
+  opacity:0,
+  y:40,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page11 #part-2 h3",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+gsap.from("#page11 #part-2 h5",{
+  opacity:0,
+  y:40,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page11 #part-2 h5",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+
+gsap.from("#page11 #part-2 #read",{
+  opacity:0,
+  y:40,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page11 #part-2 #read ",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+
+gsap.from("#page12 #left-part h3",{
+  opacity:0,
+  y:40,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page12 #left-part h3 ",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+gsap.from("#page12 #left-part h5",{
+  opacity:0,
+  y:40,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page12 #left-part h5 ",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+
+gsap.from("#page12 #left-part #read",{
+  opacity:0,
+  y:40,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page12 #left-part #read ",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+gsap.from("#page12 #right-part ",{
+  opacity:0,
+  y:50,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page12 #right-part ",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+gsap.from("#page13 #get ",{
+  opacity:0,
+  y:50,
+  duration:0.5,
+  scrollTrigger:{
+    trigger:"#page13 #get ",
+    scroller:"#main",
+    // markers:true,
+    start:"top 90%",
+    end:"top 80%",
+    scrub:2
+  }
+ 
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
